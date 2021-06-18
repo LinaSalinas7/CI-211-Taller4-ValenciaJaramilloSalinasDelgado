@@ -11,16 +11,16 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.edu.icesi.ci.taller4.front.model.clases.Autotransition;
-import com.edu.icesi.ci.taller4.front.bd.interfaces.AutotransitionDelegate;
+import com.edu.icesi.ci.taller4.back.model.PersonFence;
+import com.edu.icesi.ci.taller4.front.bd.interfaces.PersonFenceDelegate;
 
 @Component
-public class AutotransitionDelegateImp implements AutotransitionDelegate {
-	
+public class PersonFenceDelegateImp implements PersonFenceDelegate{
+
 	RestTemplate restTemplate;
 	final String SERVER="http://localhost:8082/api-rest/";
 	
-	public AutotransitionDelegateImp() {
+	public PersonFenceDelegateImp() {
 		this.restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
@@ -30,13 +30,13 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	}
 	
 	@Override
-	public Iterable<Autotransition> findAll() {
-		Autotransition[] auto = restTemplate.getForObject(SERVER + "autotransition/", Autotransition[].class);
-		List<Autotransition> list;
+	public Iterable<PersonFence> findAll() {
+		PersonFence[] pers = restTemplate.getForObject(SERVER + "personFence/", PersonFence[].class);
+		List<PersonFence> list;
 		try {
-			list = Arrays.asList(auto);
+			list = Arrays.asList(pers);
 			return list;
-		}catch (Exception e){
+		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -44,27 +44,24 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	}
 
 	@Override
-	public Autotransition save(Autotransition autotransition) {
-		return restTemplate.postForEntity(SERVER + "autotransition/save", autotransition, Autotransition.class).getBody();
+	public PersonFence save(PersonFence personFence) {
+		return restTemplate.postForEntity(SERVER + "personFence/save", personFence, PersonFence.class).getBody();
+	}
+
+	@Override
+	public PersonFence findById(long id) {
+		return restTemplate.getForObject(SERVER + "personFence/show/"+ id, PersonFence.class);
+	}
+
+	@Override
+	public void delete(PersonFence personFence) {
+		restTemplate.delete(SERVER + "personFence/delete/"+ personFence.getId());
 		
 	}
 
 	@Override
-	public Autotransition findById(long id) {
-		
-		return restTemplate.getForObject(SERVER + "autotransition/show/" + id, Autotransition.class);
-	}
-
-	@Override
-	public void delete(Autotransition autotransition) {
-		restTemplate.delete(SERVER + "autotransition/delete/" + autotransition.getAutotranId());
-		
-	}
-
-	@Override
-	public void edit(Autotransition autotransition) {
-		restTemplate.put(SERVER + "autotransition/edit", autotransition, Autotransition.class);
-		
+	public void edit(PersonFence personFence) {
+		restTemplate.put(SERVER + "personFence/edit", personFence, PersonFence.class);
 	}
 
 }

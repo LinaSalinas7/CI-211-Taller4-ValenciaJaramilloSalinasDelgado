@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.edu.icesi.ci.taller4.back.service.interfaces.InstitutionService;
-import com.edu.icesi.ci.taller4.back.service.interfaces.PersonService;
 import com.edu.icesi.ci.taller4.front.bd.interfaces.InstitutionDelegate;
 import com.edu.icesi.ci.taller4.front.bd.interfaces.PersonDelegate;
-import com.edu.icesi.ci.taller4.front.model.clases.Autotransition;
 import com.edu.icesi.ci.taller4.front.model.clases.Person;
 import com.edu.icesi.ci.taller4.front.validations.CrearAutotran;
 import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
