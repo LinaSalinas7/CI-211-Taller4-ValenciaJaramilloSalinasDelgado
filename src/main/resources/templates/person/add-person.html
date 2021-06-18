@@ -20,40 +20,31 @@
 		<h2 class="mb-5">New Person</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/autotransitions/add/}"
-					th:object="${autotransition}" method="post">
+				<form action="#" th:action="@{/persons/add/}"
+					th:object="${person}" method="post">
 					<div class="row">
 
 						<div class="form-group col-md-6">
-							<label for="name" class="col-form-label">Name</label> <input
-								type="text" th:field="*{autotranName}" class="form-control"
-								id="autotranName" placeholder="Name"> <span
-								th:if="${#fields.hasErrors('autotranName')}"
-								th:errors="*{autotranName}" class="text-danger"></span>
+							<label for="persName" class="col-form-label">Name</label> <input
+								type="text" th:field="*{persName}" class="form-control"
+								id="persName" placeholder="Name"> <span
+								th:if="${#fields.hasErrors('persName')}"
+								th:errors="*{persName}" class="text-danger"></span>
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="isactive" class="col-form-label">Active</label><input
-								th:field="*{autotranIsactive}" class="form-control"
-								id="autotranIsactive" placeholder="autotranIsactive"> <span
-								th:if="${#fields.hasErrors('autotranIsactive')}"
-								th:errors="*{autotranIsactive}" class="text-danger"></span>
+							<label for="persId" class="col-form-label">ID</label><input
+								th:field="*{persId}" class="form-control"
+								id="persId" placeholder="persId"> <span
+								th:if="${#fields.hasErrors('persId')}"
+								th:errors="*{persId}" class="text-danger"></span>
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="autotranLogicaloperand" class="col-form-label">Logical
-								Operand</label> <input th:field="*{autotranLogicaloperand}"
-								class="form-control" id="autotranLogicaloperand"
-								placeholder="Logical operand"> <span
-								th:if="${#fields.hasErrors('autotranLogicaloperand')}"
-								th:errors="*{autotranLogicaloperand}" class="text-danger"></span>
-						</div>
-
-						<div class="form-group col-md-6">
-							<label for="fevinstitution" class="col-form-label">Institution</label>
-							<select th:field="*{instInstId}" class="form-control"
-								id="fevinstitution">
-								<option th:each="inst : ${fevInstitutions}"
+							<label for="institution" class="col-form-label">Institution</label>
+							<select th:field="*{instId}" class="form-control"
+								id="institution">
+								<option th:each="inst : ${institutions}"
 									th:value="${inst.instId}" th:text="${inst.instName}" />
 							</select> 
 						</div>
@@ -62,7 +53,7 @@
 					<div class="row">
 						<div class="col-md-4 mt-3">
 							<input type="submit" name="action" class="btn btn-primary"
-								value="Add Autotransition">
+								value="Add Person">
 						</div>
 						<div class="col-md-3 mt-3">
 							<input type="reset" class="btn btn-secondary" value="Clear">

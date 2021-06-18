@@ -8,29 +8,48 @@ import com.edu.icesi.ci.taller4.back.service.interfaces.PersonService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.edu.icesi.ci.taller4.back.daos.PersonDao;
 import com.edu.icesi.ci.taller4.back.model.Person;
-import com.edu.icesi.ci.taller4.back.model.PersonRole;
 
 @Service
 public class PersonServiceImpl implements PersonService{
 	
-	private PersonRepository personRepo;
+	private PersonDao personDao;
 	
 	
-	public PersonServiceImpl(PersonRepository personRepo) {
-		this.personRepo = personRepo;
+	public PersonServiceImpl(PersonDao personDao) {
+		this.personDao = personDao;
+	}
+	
+	@Override
+	@Transactional
+	public void save(Person person) {
+		personDao.Save(person);
+		
 	}
 
+	@Override
 	@Transactional
-	@Override
-	public List<PersonRole> getPersonRoles(Person person) {
-		
-		return personRepo.findById(person.getPersId()).get().getPersonRoles();
+	public Iterable<Person> findAll() {
+		return personDao.findAll();
 	}
-	
+
 	@Override
-	public void save(Person person) {
-		personRepo.save(person);
+	@Transactional
+	public Person findById(long id) {
+		return personDao.findById(id);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Person Person) {
+		personDao.Delete(Person);
+		
+	}
+
+	@Override
+	public void edit(Person Person) {
+		personDao.Edit(Person);
 		
 	}
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Autotransitions</title>
+<title>Person</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -18,39 +18,35 @@
 <body>
 	<div class="row">
 		<div class="col-md-10">
-			<h2 class="my-5">Autotransitions</h2>
+			<h2 class="my-5">Persons</h2>
 			<h3 class="alert alert-primary"
 				th:if="${autotransitions.iterator().hasNext() == false}">No
-				Autotransitions yet!</h3>
+				Persons yet!</h3>
 			<table class="table table-striped table-responsive-md">
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Name</th>
-						<th>IsActive</th>
-						<th>LogicalOperand</th>
 						<th>InstID</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="autotransition : ${autotransitions}">
-						<td class="text-info" th:text="${autotransition.autotranId}"></td>
-						<td class="text-info" th:text="${autotransition.autotranName}"></td>
-						<td class="text-info" th:text="${autotransition.autotranIsactive}"></td>
-						<td class="text-info"th:text="${autotransition.autotranLogicaloperand}"></td>
-						<td class="text-info" th:text="${autotransition.instInstId}"></td>
+					<tr th:each="person : ${persons}">
+						<td class="text-info" th:text="${person.persId}"></td>
+						<td class="text-info" th:text="${person.persName}"></td>
+						<td class="text-info" th:text="${person.institution}"></td>
 						<td><a
-							th:href="@{/autotransitions/edit/{id}(id=${autotransition.autotranId})}"
+							th:href="@{/persons/edit/{id}(id=${person.persId})}"
 							class="btn btn-primary"><i class="fas fa-pen"></i></a></td>
 						<td><a
-							th:href="@{/autotransitions/del/{id}(id=${autotransition.autotranId})}"
+							th:href="@{/persons/del/{id}(id=${person.persId})}"
 							class="btn btn-primary"><i class="fa fa-times"></i></a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<p class="my-5">
-			<a href="/autotransitions/add" class="btn btn-primary"><i
+			<a href="/persons/add" class="btn btn-primary"><i
 				class="fa fa-plus"></i></a>
 	</div>
 	<a href="/"><i class="fas fa-home ml-2"></i> Go back to main</a>
