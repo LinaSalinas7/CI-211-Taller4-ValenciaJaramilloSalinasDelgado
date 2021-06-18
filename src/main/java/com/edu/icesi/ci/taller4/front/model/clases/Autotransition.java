@@ -6,9 +6,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import com.edu.icesi.ci.taller4.front.validations.CrearAutotran;
-import com.edu.icesi.ci.taller4.front.validations.EditarAutotran;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 

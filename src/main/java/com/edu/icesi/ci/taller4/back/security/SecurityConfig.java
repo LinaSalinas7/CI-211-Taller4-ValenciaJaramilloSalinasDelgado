@@ -14,7 +14,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.cors().and().authorizeRequests()
+		
+		httpSecurity.csrf().disable().authorizeRequests()
 		.antMatchers("/trigerrs/**").access("hasRole('administrador')")
 		.antMatchers("/trigertypes/**").access("hasRole('administrador')")
 		.antMatchers("/person/**").access("hasRole('administrador')")
@@ -35,5 +36,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.exceptionHandling()
 			.accessDeniedHandler(accessDeniedHandler);
+		
+		
+//		httpSecurity.cors().and().authorizeRequests()
+//		.antMatchers("/trigerrs/**").access("hasRole('administrador')")
+//		.antMatchers("/trigertypes/**").access("hasRole('administrador')")
+//		.antMatchers("/person/**").access("hasRole('administrador')")
+//		.antMatchers("/autotransitions/**").access("hasRole('operador')")
+//		.antMatchers("/userselects/**").access("hasRole('operador')")
+//		.antMatchers("/trigerrs/**").access("hasRole('operador')")
+//		.antMatchers("/api-rest/**").permitAll()
+//		.antMatchers("/h2/**").permitAll()
+//		.anyRequest().authenticated()
+//		.and()
+//			.formLogin()
+//			.permitAll()
+//		.and()
+//			.logout()
+//			.invalidateHttpSession(true).clearAuthentication(true)
+//			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")				
+//			.permitAll()
+//		.and()
+//		.exceptionHandling()
+//			.accessDeniedHandler(accessDeniedHandler);
+//		
+		
 	}
 }

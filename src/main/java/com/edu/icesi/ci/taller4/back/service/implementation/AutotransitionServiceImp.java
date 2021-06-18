@@ -14,8 +14,7 @@ import com.edu.icesi.ci.taller4.back.service.interfaces.AutotransitionService;
 @Service
 public class AutotransitionServiceImp implements AutotransitionService{
 
-	private AutotransitionDao autotrandao;
-	private AutotransitionRepository autotransitionrepo;
+	private AutotransitionDao autotrandao;	
 
 	@Autowired
 	public AutotransitionServiceImp(AutotransitionDao autotrandao) {
@@ -44,7 +43,7 @@ public class AutotransitionServiceImp implements AutotransitionService{
 	@Override
 	@Transactional
 	public void delete(Autotransition autotransition) {
-		autotransitionrepo.delete(autotransition);;
+		autotrandao.Delete(autotransition);;
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class UserSelectionDelegateImp implements UserSelectionDelegate{
 		this.restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON_UTF8));
         messageConverters.add(converter);
         this.restTemplate.setMessageConverters(messageConverters);
 	}

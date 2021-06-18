@@ -24,7 +24,7 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 		this.restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON_UTF8));
+        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
         messageConverters.add(converter);
         this.restTemplate.setMessageConverters(messageConverters);
 	}
@@ -45,7 +45,7 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 
 	@Override
 	public Autotransition save(Autotransition autotransition) {
-		return restTemplate.postForEntity(SERVER + "autotransition/save", autotransition, Autotransition.class).getBody();
+		return restTemplate.postForObject(SERVER + "autotransition/save", autotransition, Autotransition.class);
 		
 	}
 
@@ -67,4 +67,7 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 		
 	}
 
+	public void setRestTemplate(RestTemplate restTemplate2) {
+		this.restTemplate = restTemplate2;
+	}
 }

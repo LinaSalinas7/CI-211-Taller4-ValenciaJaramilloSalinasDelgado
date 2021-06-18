@@ -1,8 +1,5 @@
 package com.edu.icesi.ci.taller4.front.model.clases;
 
-
-import com.edu.icesi.ci.taller4.back.model.Triggerr;
-
 public class Userselect {
 	
 	private long usselId;
@@ -17,7 +14,6 @@ public class Userselect {
 
 	private String usselWherestatement;
 
-	
 	private Triggerr triggerr;
 
 	public Userselect() {
