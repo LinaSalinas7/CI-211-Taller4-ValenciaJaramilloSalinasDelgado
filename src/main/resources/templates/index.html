@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Users</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-6">
+				<h2 >Entities management!</h2>
+												
+				<div sec:authorize="hasRole('administrador')">
+					<p><a href="/triggerrs/"><i class="fa fa-cog"></i> Go to Triggerrs</a></p>
+					<p><a href="/triggertypes/"><i class="fa fa-cogs"></i> Go to Triggertypes</a></p>
+				</div>
+				
+				<div sec:authorize="hasRole('operador')">
+					<p><a href="/autotransitions/"><i class="fa fa-random"></i> Go to Autotransitions</a></p>
+					<p><a href="/userselects/"><i class="fas fa-user-edit ml-2"></i> Go to Userselects</a></p>
+					<p><a href="/triggerrs/"><i class="fa fa-cog"></i> Go to Triggerrs</a></p>										
+				</div>
+				<p><a href="/logout"><i class="fas fa-sign-out-alt ml-2"></i> Logout</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
