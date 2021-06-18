@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.edu.icesi.ci.taller4.back.model.Triggertype;
-import com.edu.icesi.ci.taller4.back.validations.CrearTrigTy;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrigTy;
+import com.edu.icesi.ci.taller4.front.model.clases.Triggertype;
+import com.edu.icesi.ci.taller4.front.validations.CrearTrigTy;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrigTy;
 
 public interface TriggertypeController {
 	public String indexTriggerTypes(Model model);

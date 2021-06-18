@@ -5,8 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.edu.icesi.ci.taller4.back.validations.CrearTrig;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrig;
+import com.edu.icesi.ci.taller4.front.validations.CrearTrig;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
 
 import java.util.List;
 

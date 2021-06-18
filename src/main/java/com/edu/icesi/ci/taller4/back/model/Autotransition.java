@@ -7,8 +7,8 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.edu.icesi.ci.taller4.back.validations.CrearAutotran;
-import com.edu.icesi.ci.taller4.back.validations.EditarAutotran;
+import com.edu.icesi.ci.taller4.front.validations.CrearAutotran;
+import com.edu.icesi.ci.taller4.front.validations.EditarAutotran;
 
 
 /**

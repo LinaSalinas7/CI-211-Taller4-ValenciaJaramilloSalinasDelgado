@@ -5,8 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.edu.icesi.ci.taller4.back.validations.CrearUssel;
-import com.edu.icesi.ci.taller4.back.validations.EditarUssel;
+import com.edu.icesi.ci.taller4.front.validations.CrearUssel;
+import com.edu.icesi.ci.taller4.front.validations.EditarUssel;
 
 
 /**

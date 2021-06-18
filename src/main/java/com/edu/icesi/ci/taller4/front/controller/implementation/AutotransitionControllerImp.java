@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.edu.icesi.ci.taller4.front.model.clases.Autotransition;
-import com.edu.icesi.ci.taller4.back.service.interfaces.AutotransitionService;
-import com.edu.icesi.ci.taller4.back.service.interfaces.FevInstitutionService;
-import com.edu.icesi.ci.taller4.back.validations.CrearAutotran;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrig;
+import com.edu.icesi.ci.taller4.front.validations.CrearAutotran;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
 import com.edu.icesi.ci.taller4.front.bd.interfaces.AutotransitionDelegate;
 import com.edu.icesi.ci.taller4.front.bd.interfaces.FetInstitutionDelegate;
 import com.edu.icesi.ci.taller4.front.controller.interfaces.AutotransitionController;

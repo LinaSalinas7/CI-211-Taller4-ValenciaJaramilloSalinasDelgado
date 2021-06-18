@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.edu.icesi.ci.taller4.back.model.Triggerr;
 import com.edu.icesi.ci.taller4.back.service.interfaces.TriggerrService;
 import com.edu.icesi.ci.taller4.back.service.interfaces.TriggertypeService;
-import com.edu.icesi.ci.taller4.back.validations.CrearTrig;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrig;
 import com.edu.icesi.ci.taller4.front.controller.interfaces.TriggerrController;
+import com.edu.icesi.ci.taller4.front.validations.CrearTrig;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
 
 @Controller
 public class TriggerrControllerImp implements TriggerrController{

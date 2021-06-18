@@ -7,10 +7,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.edu.icesi.ci.taller4.back.validations.CrearTrig;
-import com.edu.icesi.ci.taller4.back.validations.CrearTrigTy;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrig;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrigTy;
+import com.edu.icesi.ci.taller4.front.validations.CrearTrig;
+import com.edu.icesi.ci.taller4.front.validations.CrearTrigTy;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrigTy;
 
 import java.math.BigDecimal;
 import java.util.List;

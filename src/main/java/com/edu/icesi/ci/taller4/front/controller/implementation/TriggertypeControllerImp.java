@@ -1,7 +1,5 @@
 package com.edu.icesi.ci.taller4.front.controller.implementation;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,35 +11,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.edu.icesi.ci.taller4.back.model.Triggertype;
-import com.edu.icesi.ci.taller4.back.service.interfaces.FevInstitutionService;
-import com.edu.icesi.ci.taller4.back.service.interfaces.TriggertypeService;
-import com.edu.icesi.ci.taller4.back.validations.CrearTrigTy;
-import com.edu.icesi.ci.taller4.back.validations.EditarTrigTy;
+import com.edu.icesi.ci.taller4.front.model.clases.Triggertype;
+import com.edu.icesi.ci.taller4.front.validations.CrearTrigTy;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrigTy;
+import com.edu.icesi.ci.taller4.front.bd.interfaces.FetInstitutionDelegate;
+import com.edu.icesi.ci.taller4.front.bd.interfaces.TriggerTypeDelegate;
 import com.edu.icesi.ci.taller4.front.controller.interfaces.TriggertypeController;
 
 @Controller
 public class TriggertypeControllerImp implements TriggertypeController{
 	
-	private TriggertypeService trigtypeservice;
-	private FevInstitutionService fevinstservice;
+	private TriggerTypeDelegate trigtypedelegate;
+	private FetInstitutionDelegate fevinstdelegate;
 
 	@Autowired	
-	public TriggertypeControllerImp(TriggertypeService trigtypeservice,FevInstitutionService fevinstservice) {
-		this.trigtypeservice = trigtypeservice;
-		this.fevinstservice = fevinstservice;
+	public TriggertypeControllerImp(TriggerTypeDelegate trigtypedelegate,FetInstitutionDelegate fevinstdelegate) {
+		this.trigtypedelegate = trigtypedelegate;
+		this.fevinstdelegate = fevinstdelegate;
 	}
 		
 	@GetMapping("/triggertypes/")
 	public String indexTriggerTypes(Model model) {
-		model.addAttribute("triggertypes", trigtypeservice.findAll());
+		model.addAttribute("triggertypes", trigtypedelegate.findAll());
 		return "triggertypes/index";
 	}
 	
 	@GetMapping("/triggertypes/add")
 	public String addTriggertype(Model model) {
 		model.addAttribute("triggertype", new Triggertype());
-		model.addAttribute("fevInstitutions", fevinstservice.findAll());
+		model.addAttribute("fevInstitutions", fevinstdelegate.findAll());
 		return "triggertypes/add-triggertype";
 	}
 		
@@ -50,31 +48,31 @@ public class TriggertypeControllerImp implements TriggertypeController{
 			@RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if(bindingresult.hasErrors()) {	
-				model.addAttribute("fevInstitutions", fevinstservice.findAll());
+				model.addAttribute("fevInstitutions", fevinstdelegate.findAll());
 			 	return "triggertypes/add-triggertype";
 			}
 			else {
-				trigtypeservice.save(triggertype);
+				trigtypedelegate.save(triggertype);
 		}
 		return "redirect:/triggertypes/";
 	}
 
 	@GetMapping("/triggertypes/del/{id}")
 	public String deleteTriggertype(@PathVariable("id") long id, Model model) {
-		Triggertype trigtype = trigtypeservice.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-		trigtypeservice.delete(trigtype);
-		model.addAttribute("triggertypes", trigtypeservice.findAll());
+		Triggertype trigtype = trigtypedelegate.findById(id);
+		trigtypedelegate.delete(trigtype);
+		model.addAttribute("triggertypes", trigtypedelegate.findAll());
 		return "triggertypes/index";
 	}
 
 	@GetMapping("/triggertypes/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Optional<Triggertype> triggertype = trigtypeservice.findById(id);
+		Triggertype triggertype = trigtypedelegate.findById(id);
 		if (triggertype == null) {
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 		}
-		model.addAttribute("triggertype", triggertype.get());
-		model.addAttribute("fevInstitutions", fevinstservice.findAll());
+		model.addAttribute("triggertype", triggertype);
+		model.addAttribute("fevInstitutions", fevinstdelegate.findAll());
 		return "triggertypes/update-triggertype";
 	}
 
@@ -86,10 +84,10 @@ public class TriggertypeControllerImp implements TriggertypeController{
 		if (action != null && !action.equals("Cancel")) {
 			if(bindingresult.hasErrors()) {				
 				model.addAttribute("triggertype", triggertype);
-				model.addAttribute("fevInstitutions", fevinstservice.findAll());
+				model.addAttribute("fevInstitutions", fevinstdelegate.findAll());
 				return "triggertypes/update-triggertype";
 			}else {				
-				trigtypeservice.editTriggerType(id,triggertype);				
+				trigtypedelegate.edit(id,triggertype);				
 			}			
 		}
 		return "redirect:/triggertypes/";

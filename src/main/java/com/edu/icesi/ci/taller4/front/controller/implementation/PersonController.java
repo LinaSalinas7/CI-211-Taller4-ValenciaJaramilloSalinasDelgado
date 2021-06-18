@@ -17,9 +17,4 @@ public class PersonController {
 		this.personService = personService;
 		this.institutionService = institutionService;
 	}
-	
-	
-	
-	
-
 }
