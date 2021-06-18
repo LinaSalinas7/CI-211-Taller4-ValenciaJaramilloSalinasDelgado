@@ -78,30 +78,30 @@ public class Taller4RESTJuanValenciaLinasSalinasApplication {
 		aut2.setInstInstId(BigDecimal.valueOf(1));
 		as.save(aut2);
 		
-		Triggertype trigt1 = new Triggertype();
-		trigt1.setTrigtypeName("trigt1");
-		trigt1.setFevInstitution(inst3);
-		tts.save(trigt1);
-		
-		Triggerr trig1 = new Triggerr();
-		trig1.setTrigName("trig1");
-		trig1.setTrigScope("Regional");
-		trig1.setTriggertype(trigt1);
-		ts.save(trig1);
-		
-		Triggerr trig2 = new Triggerr();
-		trig2.setTrigName("trig2");
-		trig2.setTrigScope("Local");
-		trig2.setTriggertype(trigt1);
-		ts.save(trig2);
-				
-		Userselect ussel1 = new Userselect();
-		ussel1.setUsselTablename("Test");
-		ussel1.setUsselValuekeycolumn("PK");
-		ussel1.setUsselValueusercolumn("Codigo");
-		ussel1.setUsselWherestatement("WHEN");
-		ussel1.setTriggerr(trig2);
-		us.save(ussel1);
+//		Triggertype trigt1 = new Triggertype();
+//		trigt1.setTrigtypeName("trigt1");
+//		trigt1.setFevInstitution(inst3);
+//		tts.save(trigt1);
+//		
+//		Triggerr trig1 = new Triggerr();
+//		trig1.setTrigName("trig1");
+//		trig1.setTrigScope("Regional");
+//		trig1.setTriggertype(trigt1);
+//		ts.save(trig1);
+//		
+//		Triggerr trig2 = new Triggerr();
+//		trig2.setTrigName("trig2");
+//		trig2.setTrigScope("Local");
+//		trig2.setTriggertype(trigt1);
+//		ts.save(trig2);
+//				
+//		Userselect ussel1 = new Userselect();
+//		ussel1.setUsselTablename("Test");
+//		ussel1.setUsselValuekeycolumn("PK");
+//		ussel1.setUsselValueusercolumn("Codigo");
+//		ussel1.setUsselWherestatement("WHEN");
+//		ussel1.setTriggerr(trig2);
+//		us.save(ussel1);
 		
 		Userr user1 = new Userr();		
 		user1.setUsertype(UserrType.administrador);

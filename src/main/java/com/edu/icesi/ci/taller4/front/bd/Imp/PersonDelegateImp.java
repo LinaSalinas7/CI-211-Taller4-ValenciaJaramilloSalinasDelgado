@@ -24,11 +24,11 @@ public class PersonDelegateImp implements PersonDelegate{
 	
 	public PersonDelegateImp() {
 		this.restTemplate = new RestTemplate();
-		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
-		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
-		messageConverters.add(converter);
-		this.restTemplate.setMessageConverters(messageConverters);
+//		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+//		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+//		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
+//		messageConverters.add(converter);
+//		this.restTemplate.setMessageConverters(messageConverters);
 	}
 
 	@Override

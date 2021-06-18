@@ -9,8 +9,8 @@ public interface AutransitionRestController {
 
 	public Iterable<Autotransition> indexAutotransition();
 	public void saveAutotransition(Autotransition autotransition);
-	public void deleteAutotransition(Autotransition autotransition)throws LogicalException;
+	public void deleteAutotransition(long id);
 	public Autotransition showAutotransition(@PathVariable("id") long id);
-	public void updateAutotransition(Autotransition autotransition)throws LogicalException;
+	public void updateAutotransition(Autotransition autotransition);
 }
  
