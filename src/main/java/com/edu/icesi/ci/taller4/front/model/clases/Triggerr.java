@@ -2,9 +2,6 @@ package com.edu.icesi.ci.taller4.front.model.clases;
 
 import java.util.List;
 
-
-import com.edu.icesi.ci.taller4.front.model.clases.Triggertype;
-import com.edu.icesi.ci.taller4.front.model.clases.Userselect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Triggerr {

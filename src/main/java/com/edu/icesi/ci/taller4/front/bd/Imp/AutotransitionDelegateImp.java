@@ -45,7 +45,7 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 
 	@Override
 	public Autotransition save(Autotransition autotransition) {
-		return restTemplate.postForEntity(SERVER + "autotransition/save", autotransition, Autotransition.class).getBody();
+		return restTemplate.postForObject(SERVER + "autotransition/save", autotransition, Autotransition.class);
 		
 	}
 
@@ -67,4 +67,7 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 		
 	}
 
+	public void setRestTemplate(RestTemplate restTemplate2) {
+		this.restTemplate = restTemplate2;
+	}
 }

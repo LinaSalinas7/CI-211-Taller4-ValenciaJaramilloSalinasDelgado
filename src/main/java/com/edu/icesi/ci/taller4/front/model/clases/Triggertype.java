@@ -3,9 +3,6 @@ package com.edu.icesi.ci.taller4.front.model.clases;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.edu.icesi.ci.taller4.back.model.FevInstitution;
-import com.edu.icesi.ci.taller4.back.model.Triggerr;
-
 public class Triggertype {
 	
 	private long trigtypeId;

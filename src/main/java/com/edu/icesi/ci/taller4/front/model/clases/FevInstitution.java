@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import com.edu.icesi.ci.taller4.back.model.Autotransition;
-
 public class FevInstitution {
 
 	
