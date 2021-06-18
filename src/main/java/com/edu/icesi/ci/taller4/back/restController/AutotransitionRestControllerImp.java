@@ -28,8 +28,8 @@ public class AutotransitionRestControllerImp implements AutransitionRestControll
 
 	@Override
 	@PostMapping("/save")
-	public Autotransition saveAutotransition(Autotransition autotransition) {
-		return autotransitionService.save(autotransition);
+	public void saveAutotransition(Autotransition autotransition) {
+		autotransitionService.save(autotransition);
 	}
 
 	@Override
@@ -39,8 +39,7 @@ public class AutotransitionRestControllerImp implements AutransitionRestControll
 			autotransitionService.delete(autotransition);
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 
 	@Override
@@ -57,7 +56,7 @@ public class AutotransitionRestControllerImp implements AutransitionRestControll
 	@Override
 	@PutMapping("/edit")
 	public void updateAutotransition(Autotransition autotransition) throws LogicalException {
-		autotransitionService.edit(autotransition.getAutotranId(), autotransition);
+		autotransitionService.edit(autotransition);
 		
 	}
 

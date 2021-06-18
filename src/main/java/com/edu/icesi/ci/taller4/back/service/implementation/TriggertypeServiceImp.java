@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.edu.icesi.ci.taller4.back.daos.TriggertypeDao;
 import com.edu.icesi.ci.taller4.back.model.FevInstitution;
 import com.edu.icesi.ci.taller4.back.model.Triggertype;
 import com.edu.icesi.ci.taller4.back.repository.FevInstitutionRepository;
@@ -18,66 +19,41 @@ import com.edu.icesi.ci.taller4.back.service.interfaces.TriggertypeService;
 @Transactional
 public class TriggertypeServiceImp implements TriggertypeService{
 
-	private TriggertypeRepository triggertyperepo;
-	private FevInstitutionRepository fevinstitutionrepo;
-
+	private TriggertypeDao triggertypedao;
+	
 	@Autowired
-	public TriggertypeServiceImp(TriggertypeRepository triggertyperepo,
-			FevInstitutionRepository fevinstitutionrepo) {
-		this.triggertyperepo = triggertyperepo;
-		this.fevinstitutionrepo = fevinstitutionrepo;
-	}
-
-	@Override
-	public boolean saveTriggerType(long id, String name, long instId) {
-		try {
-			FevInstitution fevInst = fevinstitutionrepo.findById(instId).get();
-
-			Triggertype triggertype = new Triggertype();
-			triggertype.setTrigtypeId(id);
-
-			if(name.equals("")) {
-				throw new RuntimeException();
-			}
-
-			triggertype.setTrigtypeName(name);
-			triggertype.setFevInstitution(fevInst);
-			triggertype.setInstInstId(new BigDecimal(instId));
-
-			triggertyperepo.save(triggertype);
-			return true;
-		}
-		catch(RuntimeException rte) {
-			return false;
-		}
+	public TriggertypeServiceImp(TriggertypeDao triggertypedao) {
+		this.triggertypedao = triggertypedao;
 	}
 
 	@Override
 	@Transactional
-	public void editTriggerType(long id,Triggertype triggertype) {
-		Optional<Triggertype> trigtype = triggertyperepo.findById(id);
-		Triggertype triggert = trigtype.get();						
-		triggert.setTrigtypeName(triggertype.getTrigtypeName());
-		triggertyperepo.save(triggert);					
+	public void editTriggerType(Triggertype trigtype) {
+		triggertypedao.Edit(trigtype);
+						
 	}
 
 	@Override
+	@Transactional
 	public Iterable<Triggertype> findAll() {
-		return triggertyperepo.findAll();
+		return triggertypedao.findAll();
 	}
 
 	@Override
-	public Triggertype save(Triggertype trigtype) {
-		return triggertyperepo.save(trigtype);
+	@Transactional
+	public void save(Triggertype trigtype) {
+		triggertypedao.Save(trigtype);
 	}
 
 	@Override
-	public Optional<Triggertype> findById(long id) {
-		return triggertyperepo.findById(id);
+	@Transactional
+	public Triggertype findById(long id) {
+		return triggertypedao.findById(id);
 	}
 
 	@Override
+	@Transactional
 	public void delete(Triggertype trigtype) {
-		triggertyperepo.delete(trigtype);		
+		triggertypedao.Delete(trigtype);		
 	}
 }
