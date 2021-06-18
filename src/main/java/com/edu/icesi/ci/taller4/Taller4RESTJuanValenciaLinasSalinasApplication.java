@@ -13,6 +13,7 @@ import com.edu.icesi.ci.taller4.back.service.implementation.FevInstitutionServic
 import com.edu.icesi.ci.taller4.back.service.implementation.UserrServiceImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.AutotransitionDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.FetInstitutionDelegateImp;
+import com.edu.icesi.ci.taller4.front.bd.Imp.PersonDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.TriggerDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.TriggersTypeDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.UserSelectionDelegateImp;
@@ -34,6 +35,7 @@ public class Taller4RESTJuanValenciaLinasSalinasApplication {
 		TriggerDelegateImp td = c.getBean(TriggerDelegateImp.class);
 		TriggersTypeDelegateImp ttd = c.getBean(TriggersTypeDelegateImp.class);
 		UserSelectionDelegateImp ussd = c.getBean(UserSelectionDelegateImp.class);
+		PersonDelegateImp pd = c.getBean(PersonDelegateImp.class);
 		
 		FevInstitution inst1 = new FevInstitution();
 		inst1.setInstName("Universidad Icesi");	

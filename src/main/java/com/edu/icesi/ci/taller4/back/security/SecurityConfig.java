@@ -17,6 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.cors().and().authorizeRequests()
 		.antMatchers("/trigerrs/**").access("hasRole('administrador')")
 		.antMatchers("/trigertypes/**").access("hasRole('administrador')")
+		.antMatchers("/person/**").access("hasRole('administrador')")
 		.antMatchers("/autotransitions/**").access("hasRole('operador')")
 		.antMatchers("/userselects/**").access("hasRole('operador')")
 		.antMatchers("/trigerrs/**").access("hasRole('operador')")

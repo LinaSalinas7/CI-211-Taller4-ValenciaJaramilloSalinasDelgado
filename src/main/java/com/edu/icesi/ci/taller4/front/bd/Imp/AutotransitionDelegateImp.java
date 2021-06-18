@@ -18,13 +18,13 @@ import com.edu.icesi.ci.taller4.front.bd.interfaces.AutotransitionDelegate;
 public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8080/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest/";
 	
 	public AutotransitionDelegateImp() {
 		this.restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON_UTF8));
         messageConverters.add(converter);
         this.restTemplate.setMessageConverters(messageConverters);
 	}

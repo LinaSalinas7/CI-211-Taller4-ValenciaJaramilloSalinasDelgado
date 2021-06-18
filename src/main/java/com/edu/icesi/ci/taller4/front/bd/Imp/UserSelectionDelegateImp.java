@@ -18,7 +18,7 @@ import com.edu.icesi.ci.taller4.front.bd.interfaces.UserSelectionDelegate;
 public class UserSelectionDelegateImp implements UserSelectionDelegate{
 	
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8080/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest/";
 	
 	public UserSelectionDelegateImp() {
 		this.restTemplate = new RestTemplate();

@@ -18,7 +18,7 @@ import com.edu.icesi.ci.taller4.front.model.clases.Triggerr;
 public class TriggerDelegateImp implements TriggerDelegate{
 
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8080/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest/";
 	
 	public TriggerDelegateImp() {
 		this.restTemplate = new RestTemplate();
