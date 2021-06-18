@@ -1,22 +1,39 @@
-package com.edu.icesi.ci.taller2thymeleaf;
+package com.edu.icesi.ci.taller4;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+import com.edu.icesi.ci.taller4.back.daos.AutotransitionDaoImp;
 import com.edu.icesi.ci.taller4.back.model.FevInstitution;
 import com.edu.icesi.ci.taller4.back.model.Userr;
 import com.edu.icesi.ci.taller4.back.model.UserrType;
 import com.edu.icesi.ci.taller4.back.service.implementation.FevInstitutionServiceImp;
 import com.edu.icesi.ci.taller4.back.service.implementation.UserrServiceImp;
+import com.edu.icesi.ci.taller4.front.bd.Imp.AutotransitionDelegateImp;
+import com.edu.icesi.ci.taller4.front.bd.Imp.FetInstitutionDelegateImp;
+import com.edu.icesi.ci.taller4.front.bd.Imp.TriggerDelegateImp;
+import com.edu.icesi.ci.taller4.front.bd.Imp.TriggersTypeDelegateImp;
+import com.edu.icesi.ci.taller4.front.bd.Imp.UserSelectionDelegateImp;
 
 @SpringBootApplication
-public class Taller2ThymeleafJuanvalenciaApplication {
+@ComponentScan("com.edu.icesi.ci.taller4")
+public class Taller4RESTJuanValenciaLinasSalinasApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext c = SpringApplication.run(Taller2ThymeleafJuanvalenciaApplication.class, args);
+		ConfigurableApplicationContext c = SpringApplication.run(Taller4RESTJuanValenciaLinasSalinasApplication.class, args);
+		//Cargar users
 		UserrServiceImp u = c.getBean(UserrServiceImp.class);
+		//Cargar instituciones
 		FevInstitutionServiceImp fi = c.getBean(FevInstitutionServiceImp.class);
+		
+		//Delegates
+		AutotransitionDelegateImp ad = c.getBean(AutotransitionDelegateImp.class);
+		FetInstitutionDelegateImp fid = c.getBean(FetInstitutionDelegateImp.class);
+		TriggerDelegateImp td = c.getBean(TriggerDelegateImp.class);
+		TriggersTypeDelegateImp ttd = c.getBean(TriggersTypeDelegateImp.class);
+		UserSelectionDelegateImp ussd = c.getBean(UserSelectionDelegateImp.class);
 		
 		FevInstitution inst1 = new FevInstitution();
 		inst1.setInstName("Universidad Icesi");	

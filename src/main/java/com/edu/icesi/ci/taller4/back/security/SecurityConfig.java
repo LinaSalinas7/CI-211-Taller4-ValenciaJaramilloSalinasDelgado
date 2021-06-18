@@ -20,6 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/autotransitions/**").access("hasRole('operador')")
 		.antMatchers("/userselects/**").access("hasRole('operador')")
 		.antMatchers("/trigerrs/**").access("hasRole('operador')")
+		.antMatchers("/api-rest/**").permitAll()
+		.antMatchers("/h2/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 			.formLogin()

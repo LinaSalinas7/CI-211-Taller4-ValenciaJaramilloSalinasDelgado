@@ -58,7 +58,5 @@ public class AutotransitionRestControllerImp implements AutransitionRestControll
 	public void updateAutotransition(Autotransition autotransition) throws LogicalException {
 		autotransitionService.edit(autotransition);
 		
-	}
-
-	
+	}	
 }
