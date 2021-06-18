@@ -8,6 +8,6 @@ public interface AutotransitionDelegate {
 	public Autotransition save(Autotransition autotransition);
 	public Autotransition findById(long id);
 	public void delete(Autotransition autotransition);
-	public void edit(long id, Autotransition autotransition);
+	public void edit(Autotransition autotransition);
 
 }

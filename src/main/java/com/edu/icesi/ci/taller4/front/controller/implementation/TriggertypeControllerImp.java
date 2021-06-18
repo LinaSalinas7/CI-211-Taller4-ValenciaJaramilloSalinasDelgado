@@ -87,7 +87,7 @@ public class TriggertypeControllerImp implements TriggertypeController{
 				model.addAttribute("fevInstitutions", fevinstdelegate.findAll());
 				return "triggertypes/update-triggertype";
 			}else {				
-				trigtypedelegate.edit(id,triggertype);				
+				trigtypedelegate.edit(triggertype);				
 			}			
 		}
 		return "redirect:/triggertypes/";

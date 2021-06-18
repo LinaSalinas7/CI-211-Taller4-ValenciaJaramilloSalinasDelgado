@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.edu.icesi.ci.taller4.back.model.Triggerr;
+import com.edu.icesi.ci.taller4.front.model.clases.Triggerr;
 import com.edu.icesi.ci.taller4.front.validations.CrearTrig;
 import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
 

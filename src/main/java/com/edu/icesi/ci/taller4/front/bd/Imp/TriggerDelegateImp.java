@@ -29,8 +29,8 @@ public class TriggerDelegateImp implements TriggerDelegate{
 	}
 
 	@Override
-	public Triggerr save(Triggerr Triggerr) {
-		return restTemplate.postForEntity(SERVER + "triggerr/save", Triggerr, Triggerr.getClass()).getBody();
+	public Triggerr save(Triggerr triggerr) {
+		return restTemplate.postForEntity(SERVER + "triggerr/save", triggerr, Triggerr.class).getBody();
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class TriggerDelegateImp implements TriggerDelegate{
 	}
 
 	@Override
-	public void edit(long id, Triggerr triggerr) {
+	public void edit(Triggerr triggerr) {
 		restTemplate.put(SERVER + "triggerr/edit", triggerr, Triggerr.class);
 		
 	}

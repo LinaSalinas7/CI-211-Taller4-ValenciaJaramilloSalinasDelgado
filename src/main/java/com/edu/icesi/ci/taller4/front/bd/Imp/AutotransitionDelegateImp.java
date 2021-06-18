@@ -15,7 +15,6 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	RestTemplate restTemplate;
 	final String SERVER="http://localhost:8082/api-rest/";
 	
-
 	@Override
 	public Iterable<Autotransition> findAll() {
 		Autotransition[] auto = restTemplate.getForObject(SERVER + "autotransition/", Autotransition[].class);
@@ -49,7 +48,7 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	}
 
 	@Override
-	public void edit(long id, Autotransition autotransition) {
+	public void edit(Autotransition autotransition) {
 		restTemplate.put(SERVER + "autotransition/edit", autotransition, Autotransition.class);
 		
 	}
