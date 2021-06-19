@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Add Person Fence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">Person Fence</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<form action="#" th:action="@{/personfence/add-personfence/}"
+					th:object="${personfence}" method="post">
+					<div class="row">
+					<div class="form-group col-md-6">
+							<label for="dumy" class="col-form-label">Dummy</label> <input
+								th:field="*{dumy}" class="form-control" id="dumy"
+								placeholder="dumy"> <span
+								th:if="${#fields.hasErrors('dumy')}"
+								th:errors="*{dumy}" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label for="person" class="col-form-label">Person</label> <select
+								th:field="*{person}" class="form-control" id="person">
+								<option th:each="trig : ${person}" th:value="${trig.persId}"
+									th:text="${trig.persName}" />
+							</select>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label for="persPersId" class="col-form-label">persPersId</label> <input
+								th:field="*{persPersId}" class="form-control" id="persPersId"
+								placeholder="persPersId"> <span
+								th:if="${#fields.hasErrors('persPersId')}"
+								th:errors="*{persPersId}" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label for="contfenContfenId" class="col-form-label">contfenContfenId</label> <input
+								th:field="*{contfenContfenId}" class="form-control" id="contfenContfenId"
+								placeholder="contfenContfenId"> <span
+								th:if="${#fields.hasErrors('contfenContfenId')}"
+								th:errors="contfenContfenId" class="text-danger"></span>
+						</div>
+						
+						<div></div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 mt-3">
+							<input type="submit" name="action" class="btn btn-primary"
+								value="Add">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Clear">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary"
+								value="Cancel">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

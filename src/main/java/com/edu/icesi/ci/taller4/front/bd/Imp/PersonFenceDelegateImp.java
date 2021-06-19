@@ -8,17 +8,19 @@ import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.edu.icesi.ci.taller4.back.model.PersonFence;
+import com.edu.icesi.ci.taller4.back.model.PersonFencePK;
 import com.edu.icesi.ci.taller4.front.bd.interfaces.PersonFenceDelegate;
 
-@Component
 public class PersonFenceDelegateImp implements PersonFenceDelegate{
 
-	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8082/api-rest/";
+	
+	public static final String SERVER = "http://localhost:8082/api-rest";
+
+	private RestTemplate restTemplate;
+
 	
 	public PersonFenceDelegateImp() {
 		this.restTemplate = new RestTemplate();
@@ -28,40 +30,38 @@ public class PersonFenceDelegateImp implements PersonFenceDelegate{
         messageConverters.add(converter);
         this.restTemplate.setMessageConverters(messageConverters);
 	}
-	
-	@Override
-	public Iterable<PersonFence> findAll() {
-		PersonFence[] pers = restTemplate.getForObject(SERVER + "personFence/", PersonFence[].class);
-		List<PersonFence> list;
-		try {
-			list = Arrays.asList(pers);
-			return list;
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
 		
+	@Override
+	public List<PersonFence> personFenceFindAll() {
+		String url = SERVER + "/personfence/";
+		PersonFence[] personFence = restTemplate.getForObject(url, PersonFence[].class);
+		List<PersonFence> result = Arrays.asList(personFence);
+		return result;
 	}
 
 	@Override
-	public PersonFence save(PersonFence personFence) {
-		return restTemplate.postForEntity(SERVER + "personFence/save", personFence, PersonFence.class).getBody();
+	public void personFenceSave(PersonFence personFence) {
+		String url = SERVER + "/personfence/";
+		restTemplate.postForObject(url, personFence, PersonFence.class);
 	}
 
 	@Override
-	public PersonFence findById(long id) {
-		return restTemplate.getForObject(SERVER + "personFence/show/"+ id, PersonFence.class);
+	public void personFenceEdit(PersonFence personFence) {
+		String url = SERVER + "/personfence/";
+		restTemplate.put(url, personFence, PersonFence.class);
 	}
 
 	@Override
-	public void delete(PersonFence personFence) {
-		restTemplate.delete(SERVER + "personFence/delete/"+ personFence.getId());
-		
+	public PersonFence personFenceFindById(PersonFencePK id) {
+		String url = SERVER + "/personfence/";
+		PersonFence personfence = restTemplate.postForObject(url,id ,PersonFence.class);
+		return personfence;
 	}
 
 	@Override
-	public void edit(PersonFence personFence) {
-		restTemplate.put(SERVER + "personFence/edit", personFence, PersonFence.class);
-	}
+	public void personFenceDelete(PersonFence id) {
+		String url = SERVER + "/personfence/del/";		
+		restTemplate.delete(url, id, PersonFence.class);
+	}	
 
 }

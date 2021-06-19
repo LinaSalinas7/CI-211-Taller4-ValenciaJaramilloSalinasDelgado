@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Edit Person</title>
+<title>Edit personfences</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -17,43 +17,34 @@
 </head>
 <body>
 	<div class="container my-5">
-		<h2 class="mb-5">Edit Person</h2>
+		<h2 class="mb-5">Edit person fence</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/persons/edit/{id}(id=${person.persId})}"
-					th:object="${person}" method="post">
+				<form action="#"
+					th:action="@{/person/edit/{id}/{id2}(id=${personfenc.id.persPersId,id2=${personfenc.id.contfenContfenId})}"
+					th:object="${personfence}" method="post">
 					<div class="row">
-
 						<div class="form-group col-md-6">
-							<label for="persName" class="col-form-label">Name</label> <input
-								type="text" th:field="*{persName}" class="form-control"
-								id="persName" placeholder="Name"> <span
-								th:if="${#fields.hasErrors('persName')}"
-								th:errors="*{persName}" class="text-danger"></span>
+							<label for="dumy" class="col-form-label">Dumy</label> <input
+								th:field="*{dumy}" class="form-control" id="persName"
+								placeholder="name" th:value="${personfence.dumy}"> <span
+								th:if="${#fields.hasErrors('dumy')}" th:errors="*{dumy}"
+								class="text-danger"></span>
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="persId" class="col-form-label">ID</label><input
-								th:field="*{persId}" class="form-control"
-								id="persId" placeholder="persId"> <span
-								th:if="${#fields.hasErrors('persId')}"
-								th:errors="*{persId}" class="text-danger"></span>
+							<label for="person" class="col-form-label">Person</label> <input
+								th:field="*{person}" class="form-control" id="person"
+								placeholder="person" th:value="${personfence.person.persName}"> <span
+								th:if="${#fields.hasErrors('person')}" th:errors="*{person}"
+								class="text-danger"></span>
 						</div>
-
-						<div class="form-group col-md-6">
-							<label for="institution" class="col-form-label">Institution</label>
-							<select th:field="*{instId}" class="form-control"
-								id="institution">
-								<option th:each="inst : ${institutions}"
-									th:value="${inst.instId}" th:text="${inst.instName}" />
-							</select> 
-						</div>
-
+						<div></div>
 					</div>
 					<div class="row">
-						<div class="col-md-4 mt-3">
+						<div class="col-md-6 mt-3">
 							<input type="submit" name="action" class="btn btn-primary"
-								value="Update Person">
+								value="Submit">
 						</div>
 						<div class="col-md-3 mt-3">
 							<input type="reset" class="btn btn-secondary" value="Clear">

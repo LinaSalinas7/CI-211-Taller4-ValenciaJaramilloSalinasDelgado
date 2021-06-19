@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.edu.icesi.ci.taller4.back.model.PersonFence;
 import com.edu.icesi.ci.taller4.back.service.interfaces.PersonFenceService;
 
-
 @RestController
-@RequestMapping("/api-rest/personfence")
+@RequestMapping("/backend/personfence")
 public class PersonFenceRestController {
 	
 	@Autowired
@@ -41,7 +40,7 @@ public class PersonFenceRestController {
 		personFenceService.edit(personFence);
 	}	
 	
-	@DeleteMapping("/{persId}")
+	@DeleteMapping("/del/{persId}")
 	public void deletePerson(@PathVariable("persId") long id){
 		PersonFence person = personFenceService.findById(id);
 		personFenceService.delete(person);
