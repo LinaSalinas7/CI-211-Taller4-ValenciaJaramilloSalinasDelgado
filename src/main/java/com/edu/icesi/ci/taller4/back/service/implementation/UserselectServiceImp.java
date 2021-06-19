@@ -1,5 +1,7 @@
 package com.edu.icesi.ci.taller4.back.service.implementation;
 
+import java.util.Optional;
+
 //import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -20,7 +22,6 @@ public class UserselectServiceImp implements UserselectService{
 	public UserselectServiceImp(UserselectDao usseldao) {
 		this.usseldao = usseldao;
 	}
-	
 	
 	@Override
 	@Transactional
@@ -45,11 +46,15 @@ public class UserselectServiceImp implements UserselectService{
 	public void delete(Userselect ussel) {
 		usseldao.Delete(ussel);		
 	}
-
+	
 	@Override
 	@Transactional
-	public void editUserSelect(Userselect userselect) {
-		usseldao.Edit(userselect);
-		
+	public void edit(long id, Userselect ussel) {		
+		Userselect usersel = usseldao.findById(id);
+		usersel.setUsselTablename(ussel.getUsselTablename());
+		usersel.setUsselValuekeycolumn(ussel.getUsselValuekeycolumn());
+		usersel.setUsselValueusercolumn(ussel.getUsselValueusercolumn());
+		usersel.setUsselWherestatement(ussel.getUsselWherestatement());
+		usseldao.Save(usersel);		
 	}
 }

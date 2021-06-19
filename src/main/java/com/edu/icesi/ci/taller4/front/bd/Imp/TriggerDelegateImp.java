@@ -18,49 +18,43 @@ import com.edu.icesi.ci.taller4.front.model.clases.Triggerr;
 public class TriggerDelegateImp implements TriggerDelegate{
 
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8082/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest";
 	
 	public TriggerDelegateImp() {
 		this.restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON_UTF8));
+        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
         messageConverters.add(converter);
         this.restTemplate.setMessageConverters(messageConverters);
 	}
 	
 	@Override
 	public Iterable<Triggerr> findAll() {
-		Triggerr[] trigger = restTemplate.getForObject(SERVER + "triggerr/", Triggerr[].class);
-		List<Triggerr> list;
-		try {
-			list = Arrays.asList(trigger);
-			return list;
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		Triggerr[] trigger = restTemplate.getForObject(SERVER + "/triggerr/", Triggerr[].class);
+		List<Triggerr> list = Arrays.asList(trigger); 				
+		return list;
 	}
 
 	@Override
 	public Triggerr save(Triggerr triggerr) {
-		return restTemplate.postForEntity(SERVER + "triggerr/save", triggerr, Triggerr.class).getBody();
+		return restTemplate.postForEntity(SERVER + "/triggerr/", triggerr, Triggerr.class).getBody();
 	}
 
 	@Override
 	public Triggerr findById(long id) {
-		return restTemplate.getForObject(SERVER + "triggerr/show" + id, Triggerr.class);
+		return restTemplate.getForObject(SERVER + "/triggerr/" + id, Triggerr.class);
 	}
 
 	@Override
 	public void delete(Triggerr triggerr) {
-		restTemplate.delete(SERVER + "triggerr/delete/" + triggerr.getTrigId());
+		restTemplate.delete(SERVER + "/triggerr/" + triggerr.getTrigId());
 		
 	}
 
 	@Override
-	public void edit(Triggerr triggerr) {
-		restTemplate.put(SERVER + "triggerr/edit", triggerr, Triggerr.class);
+	public void edit(long id, Triggerr triggerr) {
+		restTemplate.put(SERVER + "/triggerr/" + id, triggerr, Triggerr.class);
 		
 	}
 

@@ -1,6 +1,5 @@
 package com.edu.icesi.ci.taller4.back.service.implementation;
 
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.edu.icesi.ci.taller4.back.daos.AutotransitionDao;
 import com.edu.icesi.ci.taller4.back.model.Autotransition;
-import com.edu.icesi.ci.taller4.back.repository.AutotransitionRepository;
 import com.edu.icesi.ci.taller4.back.service.interfaces.AutotransitionService;
 
 @Service
@@ -23,9 +21,12 @@ public class AutotransitionServiceImp implements AutotransitionService{
 	
 	@Override
 	@Transactional
-	public void edit(Autotransition autotrans) {
-		autotrandao.Edit(autotrans);
-								
+	public void edit(long id, Autotransition autotrans) {
+		Autotransition autotransition = autotrandao.findById(id);											
+		autotransition.setAutotranIsactive(autotrans.getAutotranIsactive());			
+		autotransition.setAutotranLogicaloperand(autotrans.getAutotranLogicaloperand());
+		autotransition.setAutotranName(autotrans.getAutotranName());
+		autotrandao.Save(autotransition);								
 	}
 	
 	@Override

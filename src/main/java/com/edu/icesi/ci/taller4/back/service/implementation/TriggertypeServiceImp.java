@@ -23,9 +23,10 @@ public class TriggertypeServiceImp implements TriggertypeService{
 
 	@Override
 	@Transactional
-	public void editTriggerType(Triggertype trigtype) {
-		triggertypedao.Edit(trigtype);
-						
+	public void edit(long id,Triggertype triggertype) {
+		Triggertype trigtype = triggertypedao.findById(id);		;						
+		trigtype.setTrigtypeName(triggertype.getTrigtypeName());
+		triggertypedao.Save(trigtype);					
 	}
 
 	@Override

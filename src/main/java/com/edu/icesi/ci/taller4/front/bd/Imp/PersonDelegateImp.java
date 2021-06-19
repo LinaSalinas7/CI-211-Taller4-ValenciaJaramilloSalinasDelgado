@@ -20,50 +20,41 @@ import com.edu.icesi.ci.taller4.front.model.clases.Person;
 public class PersonDelegateImp implements PersonDelegate{
 	
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8082/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest";
 	
 	public PersonDelegateImp() {
 		this.restTemplate = new RestTemplate();
-//		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
-//		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-//		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
-//		messageConverters.add(converter);
-//		this.restTemplate.setMessageConverters(messageConverters);
+		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
+		messageConverters.add(converter);
+		this.restTemplate.setMessageConverters(messageConverters);
 	}
 
 	@Override
 	public Iterable<Person> findAll() {
-		Person[] per = restTemplate.getForObject(SERVER + "person/", Person[].class);
-		List<Person> list;
-		try {
-			list = Arrays.asList(per);
-			return list;
-		}catch (Exception e){
-			e.printStackTrace();
-			return null;
-		}
+		Person[] per = restTemplate.getForObject(SERVER + "/person/", Person[].class);
+		List<Person> list = Arrays.asList(per);
+		return list;
 	}
 
 	@Override
 	public Person save(Person person) {
-		return restTemplate.postForEntity(SERVER + "person/save", person, Person.class).getBody();
+		return restTemplate.postForEntity(SERVER + "/person/", person, Person.class).getBody();
 	}
 
 	@Override
 	public Person findById(long id) {
-		return restTemplate.getForObject(SERVER + "person/show"+ id, Person.class);
+		return restTemplate.getForObject(SERVER + "/person/"+ id, Person.class);
 	}
 
 	@Override
 	public void delete(Person person) {
-		restTemplate.delete(SERVER + "person/delete/" + person.getPersId());
-		
+		restTemplate.delete(SERVER + "/person/" + person.getPersId());
 	}
 
 	@Override
 	public void edit(Person person) {
-		restTemplate.put(SERVER + "person/edit", person, Person.class);
-		
+		restTemplate.put(SERVER + "/person/", person, Person.class);
 	}
-
 }

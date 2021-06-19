@@ -9,5 +9,5 @@ public interface AutotransitionService {
 	public void save(Autotransition autotransition);
 	public Autotransition findById(long id);
 	public void delete(Autotransition autotransition);
-	public void edit( Autotransition autotrans);
+	void edit(long id, Autotransition autotrans);
 }

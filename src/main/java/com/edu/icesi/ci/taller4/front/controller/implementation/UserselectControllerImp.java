@@ -88,7 +88,7 @@ public class UserselectControllerImp implements UserselectController{
 				model.addAttribute("triggerrs", trigDel.findAll());
 				return "userselects/update-userselect";
 			}
-			userDel.save(userselect);			
+						
 		}
 		return "redirect:/userselects/";
 	}

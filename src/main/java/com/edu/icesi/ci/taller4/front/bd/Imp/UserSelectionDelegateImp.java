@@ -18,49 +18,42 @@ import com.edu.icesi.ci.taller4.front.bd.interfaces.UserSelectionDelegate;
 public class UserSelectionDelegateImp implements UserSelectionDelegate{
 	
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8082/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest";
 	
 	public UserSelectionDelegateImp() {
 		this.restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON_UTF8));
+        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
         messageConverters.add(converter);
         this.restTemplate.setMessageConverters(messageConverters);
 	}
 	
 	@Override
 	public Iterable<Userselect> findAll() {
-		Userselect[] userS = restTemplate.getForObject(SERVER + "userselect/", Userselect[].class);
-		List<Userselect> list;
-		try {
-			list = Arrays.asList(userS);
-			return list;
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		Userselect[] userS = restTemplate.getForObject(SERVER + "/userselect/", Userselect[].class);
+		List<Userselect> list = Arrays.asList(userS);		
+		return list;
 	}
 
 	@Override
 	public Userselect save(Userselect userselect) {
-		return restTemplate.postForEntity(SERVER + "userselect/save", userselect, Userselect.class).getBody();
+		return restTemplate.postForEntity(SERVER + "/userselect/", userselect, Userselect.class).getBody();
 	}
 
 	@Override
 	public Userselect findById(long id) {
-		return restTemplate.getForObject(SERVER + "userselect/show" + id, Userselect.class);
+		return restTemplate.getForObject(SERVER + "/userselect/" + id, Userselect.class);
 	}
 
 	@Override
 	public void delete(Userselect userselect) {
-		restTemplate.delete(SERVER + "userselect/delete" + userselect.getUsselId());;
+		restTemplate.delete(SERVER + "/userselect/" + userselect.getUsselId());;
 		
 	}
 
 	@Override
-	public void edit(Userselect userselect) {
-		restTemplate.put(SERVER + "userselect/edit", userselect, Userselect.class);	
+	public void edit(long id, Userselect userselect) {
+		restTemplate.put(SERVER + "/userselect/" + id, userselect, Userselect.class);	
 	}
-
 }

@@ -11,6 +11,7 @@ import com.edu.icesi.ci.taller4.front.validations.CrearTrig;
 import com.edu.icesi.ci.taller4.front.validations.CrearTrigTy;
 import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
 import com.edu.icesi.ci.taller4.front.validations.EditarTrigTy;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -42,6 +43,7 @@ public class Triggertype implements Serializable {
 
 	//bi-directional many-to-one association to Triggerr
 	@OneToMany(mappedBy="triggertype")
+	@JsonIgnore
 	private List<Triggerr> triggerrs;
 	
 	//Se agregan las siguientes relaciones de acuerdo al diagrama del enunciado

@@ -7,6 +7,6 @@ public interface TriggerTypeDelegate {
 	public Iterable<Triggertype> findAll();
 	public Triggertype save(Triggertype triggertype);
 	public Triggertype findById(long id);
-	public void delete(Triggertype triggertype);
-	public void edit(Triggertype triggertype);	
+	public void delete(Triggertype triggertype);	
+	public void edit(long id, Triggertype triggertype);	
 }

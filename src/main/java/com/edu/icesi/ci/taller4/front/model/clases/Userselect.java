@@ -1,5 +1,11 @@
 package com.edu.icesi.ci.taller4.front.model.clases;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.edu.icesi.ci.taller4.front.validations.CrearUssel;
+import com.edu.icesi.ci.taller4.front.validations.EditarUssel;
+
 public class Userselect {
 	
 	private long usselId;
@@ -8,12 +14,13 @@ public class Userselect {
 	
 	private String usselValuekeycolumn;
 
-	
+	@NotBlank(groups= {CrearUssel.class,EditarUssel.class})
 	private String usselValueusercolumn;
 
-
+	@NotBlank(groups= {CrearUssel.class,EditarUssel.class})
 	private String usselWherestatement;
 
+	@NotNull(groups= {CrearUssel.class,EditarUssel.class})
 	private Triggerr triggerr;
 
 	public Userselect() {

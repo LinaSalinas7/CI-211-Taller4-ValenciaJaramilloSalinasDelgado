@@ -1,6 +1,5 @@
 package com.edu.icesi.ci.taller4.back.service.implementation;
 
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +46,10 @@ public class TriggerrServiceImp implements TriggerrService{
 
 	@Override
 	@Transactional
-	public void edit(Triggerr triggerr) {
-		trigDao.Edit(triggerr);
-		
+	public void edit(long id, Triggerr trigger) {		
+		Triggerr trig = trigDao.findById(id);					
+		trig.setTrigScope(trigger.getTrigScope());
+		trig.setTrigName(trigger.getTrigName());	
+		trigDao.Save(trig);
 	}
 }

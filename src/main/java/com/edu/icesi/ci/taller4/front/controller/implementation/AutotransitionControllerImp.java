@@ -21,7 +21,6 @@ import com.edu.icesi.ci.taller4.front.controller.interfaces.AutotransitionContro
 @Controller
 public class AutotransitionControllerImp implements AutotransitionController{
 	
-	
 	private AutotransitionDelegate autotranDele;
 	private FetInstitutionDelegate fevInstitutionDele; 
 
@@ -88,7 +87,7 @@ public class AutotransitionControllerImp implements AutotransitionController{
 				model.addAttribute("fevInstitutions", fevInstitutionDele.findAll());
 				return "autotransitions/update-autotransition";
 			}
-			autotranDele.delete(autotransition);
+			autotranDele.edit(id, autotransition);
 		}
 		return "redirect:/autotransitions/";
 	}

@@ -27,30 +27,28 @@ public class TriggerRestControllerImp implements TriggerRestController{
 	}
 
 	@Override
-	@PostMapping("/save")
+	@PostMapping
 	public void saveTriggerr(@RequestBody Triggerr triggerr) {		
 		triggerrService.save(triggerr);
 	}
 
 	@Override
-	@DeleteMapping("/delete/{id}")
-	public void deleteTriggerr(@PathVariable("autotranId") long id){
+	@DeleteMapping("/{trigId}")
+	public void deleteTriggerr(@PathVariable("trigId") long id){
 		Triggerr trig = triggerrService.findById(id);
-		triggerrService.delete(trig);
-		
+		triggerrService.delete(trig);		
 	}
 
 	@Override
-	@GetMapping("/show/{id}")
+	@GetMapping("/{trigId}")
 	public Triggerr showTriggerr(@PathVariable("id") long id) {
 		return triggerrService.findById(id);
 	}
 
 	@Override
-	@PutMapping("/edit")
-	public void updateTriggerr(@RequestBody Triggerr triggerr) {
-		triggerrService.edit(triggerr);
+	@PutMapping("/{trigId}")
+	public void updateTriggerr(@PathVariable("id") long id, @RequestBody Triggerr triggerr) {
+		triggerrService.edit(id, triggerr);
 		
 	}
-
 }

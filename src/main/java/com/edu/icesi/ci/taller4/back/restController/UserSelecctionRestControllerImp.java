@@ -3,19 +3,20 @@ package com.edu.icesi.ci.taller4.back.restController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.icesi.ci.taller4.back.exception.LogicalException;
 import com.edu.icesi.ci.taller4.back.model.Userselect;
 import com.edu.icesi.ci.taller4.back.service.interfaces.UserselectService;
 
 @RestController
 @RequestMapping("/api-rest/userselect")
 public class UserSelecctionRestControllerImp implements UserSelecctionRestController{
-	
+
 	@Autowired
 	private UserselectService userselectService; 
 
@@ -26,39 +27,27 @@ public class UserSelecctionRestControllerImp implements UserSelecctionRestContro
 	}
 
 	@Override
-	@PostMapping("/save")
-	public void save(Userselect userselect) {
+	@PostMapping
+	public void save(@RequestBody Userselect userselect) {
 		userselectService.save(userselect);
-		
 	}
 
 	@Override
-	@DeleteMapping("/delete/{id}")
-	public void delete(Userselect userselect) throws LogicalException {
-		try {
-			userselectService.delete(userselect);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+	@DeleteMapping("/{usselId}")
+	public void delete(@PathVariable("usselId") long id){
+		Userselect userselect = new Userselect();
+		userselectService.delete(userselect);
 	}
 
 	@Override
-	@GetMapping("/show/{id}")
-	public Userselect showUserselect(long id) {
-		try {
-			return userselectService.findById(id);
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+	@GetMapping("/{usselId}")
+	public Userselect showUserselect(@PathVariable("usselId") long id) {
+		return userselectService.findById(id);
 	}
 
-	@Override
-	@PutMapping("/edit")
-	public void updateUserselect(Userselect userselect) throws LogicalException {
-		userselectService.editUserSelect(userselect);
-		
+	@Override	
+	@PutMapping("/{usselId}")
+	public void updateUserselect(@PathVariable("usselId") long id, @RequestBody Userselect userselect){
+		userselectService.edit(id, userselect);
 	}
-
 }

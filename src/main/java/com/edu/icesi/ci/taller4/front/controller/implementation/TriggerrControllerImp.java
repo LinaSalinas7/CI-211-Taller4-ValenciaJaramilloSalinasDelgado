@@ -91,7 +91,7 @@ public class TriggerrControllerImp implements TriggerrController{
 				return "triggerrs/update-trigger";
 			}
 			else {
-				triggerDelegate.edit(triggerr); 		
+				triggerDelegate.edit(id,triggerr); 		
 			}
 		}
 		return "redirect:/triggerrs/";

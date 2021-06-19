@@ -18,7 +18,7 @@ import com.edu.icesi.ci.taller4.front.bd.interfaces.AutotransitionDelegate;
 public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	
 	RestTemplate restTemplate;
-	final String SERVER="http://localhost:8082/api-rest/";
+	final String SERVER="http://localhost:8082/api-rest";
 	
 	public AutotransitionDelegateImp() {
 		this.restTemplate = new RestTemplate();
@@ -31,39 +31,31 @@ public class AutotransitionDelegateImp implements AutotransitionDelegate {
 	
 	@Override
 	public Iterable<Autotransition> findAll() {
-		Autotransition[] auto = restTemplate.getForObject(SERVER + "autotransition/", Autotransition[].class);
-		List<Autotransition> list;
-		try {
-			list = Arrays.asList(auto);
-			return list;
-		}catch (Exception e){
-			e.printStackTrace();
-			return null;
-		}
-		
+		Autotransition[] auto = restTemplate.getForObject(SERVER + "/autotransition/", Autotransition[].class);
+		List<Autotransition> list = Arrays.asList(auto);
+		return list;		
 	}
 
 	@Override
 	public Autotransition save(Autotransition autotransition) {
-		return restTemplate.postForObject(SERVER + "autotransition/save", autotransition, Autotransition.class);
+		return restTemplate.postForObject(SERVER + "/autotransition/", autotransition, Autotransition.class);
 		
 	}
 
 	@Override
-	public Autotransition findById(long id) {
-		
-		return restTemplate.getForObject(SERVER + "autotransition/show/" + id, Autotransition.class);
+	public Autotransition findById(long id) {		
+		return restTemplate.getForObject(SERVER + "/autotransition/" + id, Autotransition.class);
 	}
 
 	@Override
-	public void delete(Autotransition autotransition) {
-		restTemplate.delete(SERVER + "autotransition/delete/" + autotransition.getAutotranId());
+	public void delete(Autotransition autotran) {
+		restTemplate.delete(SERVER + "/autotransition/" + autotran.getAutotranId());
 		
 	}
 
 	@Override
-	public void edit(Autotransition autotransition) {
-		restTemplate.put(SERVER + "autotransition/edit", autotransition, Autotransition.class);
+	public void edit(long id, Autotransition autotransition) {
+		restTemplate.put(SERVER + "/autotransition/" + id, autotransition, Autotransition.class);
 		
 	}
 

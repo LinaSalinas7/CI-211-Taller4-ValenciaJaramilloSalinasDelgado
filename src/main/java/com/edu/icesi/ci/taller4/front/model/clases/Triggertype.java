@@ -3,14 +3,23 @@ package com.edu.icesi.ci.taller4.front.model.clases;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.edu.icesi.ci.taller4.front.validations.CrearTrigTy;
+import com.edu.icesi.ci.taller4.front.validations.EditarTrigTy;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Triggertype {
 	
 	private long trigtypeId;
 
+	@NotNull(groups= {CrearTrigTy.class,EditarTrigTy.class})
 	private BigDecimal instInstId;
 
+	@NotBlank(groups= {CrearTrigTy.class,EditarTrigTy.class})
 	private String trigtypeName;
-
+	
 	private List<Triggerr> triggerrs;
 	
 	private FevInstitution fevinstitution;

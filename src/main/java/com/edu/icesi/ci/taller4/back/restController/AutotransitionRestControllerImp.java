@@ -28,33 +28,27 @@ public class AutotransitionRestControllerImp implements AutransitionRestControll
 	}
 
 	@Override
-	@PostMapping("/save")
+	@PostMapping
 	public void saveAutotransition(@RequestBody Autotransition autotransition) {
 		autotransitionService.save(autotransition);
 	}
 
 	@Override
-	@DeleteMapping("/delete/{autotranId}")
+	@DeleteMapping("/{autotranId}")
 	public void deleteAutotransition(@PathVariable("autotranId") long id){
 		Autotransition auto = autotransitionService.findById(id);
 		autotransitionService.delete(auto);
 	}
 
 	@Override
-	@GetMapping("/show/{autotranId}")
-	public Autotransition showAutotransition(@PathVariable("autotranId") long id) {
-		try {
-			return autotransitionService.findById(id);
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+	@GetMapping("/{autotranId}")
+	public Autotransition showAutotransition(@PathVariable("autotranId") long id) {		
+		return autotransitionService.findById(id);
 	}
 
 	@Override
-	@PutMapping("/edit")
-	public void updateAutotransition(@RequestBody Autotransition autotransition){
-		autotransitionService.edit(autotransition);
-		
+	@PutMapping("/{autotranId}")
+	public void updateAutotransition(@PathVariable("autotranId") long id, @RequestBody Autotransition autotransition){
+		autotransitionService.edit(id, autotransition);		
 	}	
 }

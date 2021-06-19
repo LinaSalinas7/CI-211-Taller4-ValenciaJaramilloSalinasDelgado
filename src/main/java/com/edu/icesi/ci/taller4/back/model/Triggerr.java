@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import com.edu.icesi.ci.taller4.front.validations.CrearTrig;
 import com.edu.icesi.ci.taller4.front.validations.EditarTrig;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
@@ -50,10 +51,12 @@ public class Triggerr implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="TRIGTYPE_TRIGTYPE_ID")
 	@NotNull(groups= {CrearTrig.class, EditarTrig.class})	
+	@JsonIgnore
 	private Triggertype triggertype;
 
 	//bi-directional many-to-one association to Userselect
 	@OneToMany(mappedBy="triggerr")
+	@JsonIgnore
 	private List<Userselect> userselects;
 		
 	public Triggerr() {

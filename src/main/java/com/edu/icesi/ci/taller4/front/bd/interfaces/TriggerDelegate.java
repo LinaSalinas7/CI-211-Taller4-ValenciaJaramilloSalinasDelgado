@@ -7,6 +7,6 @@ public interface TriggerDelegate {
 	public Triggerr save(Triggerr Triggerr);
 	public Triggerr findById(long id);
 	public void delete(Triggerr triggerr);
-	public void edit(Triggerr triggerr);
+	public void edit(long id, Triggerr triggerr);
 
 }
