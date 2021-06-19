@@ -23,7 +23,8 @@ public class ContactfenceDaoImp implements ContactfenceDao{
 	@Override
 	@Transactional
 	public void save(Contactfence entity) {
-		entityManager.persist(entity);
+		Contactfence attachedEntity = entityManager.merge(entity);
+		entityManager.persist(attachedEntity);
 
 	}
 

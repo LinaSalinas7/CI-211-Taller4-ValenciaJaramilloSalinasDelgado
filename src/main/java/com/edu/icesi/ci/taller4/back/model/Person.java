@@ -144,7 +144,7 @@ public class Person implements Serializable {
 	private List<Personrelationship> personrelationships2;
 
 	//bi-directional many-to-one association to PersonFence
-	@OneToMany(mappedBy="person")
+	@OneToMany(mappedBy="person",cascade=CascadeType.ALL)
 	@JsonIgnore
 	private List<PersonFence> personFences;
 

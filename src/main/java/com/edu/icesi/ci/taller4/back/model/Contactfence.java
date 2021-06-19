@@ -2,6 +2,9 @@ package com.edu.icesi.ci.taller4.back.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -49,12 +52,14 @@ public class Contactfence implements Serializable {
 	private List<Contactfence> contactfences;
 
 	//bi-directional many-to-one association to Person
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="PERS_PERS_ID")
+	@JsonIgnore
 	private Person person;
 
 	//bi-directional many-to-one association to PersonFence
-	@OneToMany(mappedBy="contactfence")
+	@OneToMany(mappedBy="contactfence",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<PersonFence> personFences;
 
 	//bi-directional many-to-one association to Queuecreatefence

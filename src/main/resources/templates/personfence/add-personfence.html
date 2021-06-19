@@ -30,13 +30,13 @@
 								th:if="${#fields.hasErrors('dumy')}"
 								th:errors="*{dumy}" class="text-danger"></span>
 						</div>
-						
+												
 						<div class="form-group col-md-6">
-							<label for="person" class="col-form-label">Person</label> <select
-								th:field="*{person}" class="form-control" id="person">
-								<option th:each="pers : ${person}" th:value="${pers.persId}"
-									th:text="${pers.persName}" />
-							</select>
+							<label for="person.PersId" class="col-form-label">persPersId</label> <input
+								th:field="*{person.PersId}" class="form-control" id="person.PersId"
+								placeholder="person.PersId"> <span
+								th:if="${#fields.hasErrors('person.PersId')}"
+								th:errors="*{person.PersId}" class="text-danger"></span>
 						</div>
 												
 						<div class="form-group col-md-6">

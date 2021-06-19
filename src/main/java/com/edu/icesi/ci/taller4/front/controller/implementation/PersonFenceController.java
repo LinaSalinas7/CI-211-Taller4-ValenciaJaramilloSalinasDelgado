@@ -92,7 +92,7 @@ public class PersonFenceController {
 		return "redirect:/personfence/";
 	}
 
-	@GetMapping("/person/del/{id}/{id2}")
+	@GetMapping("/personfence/del/{id}/{id2}")
 	public String deletePerson(@PathVariable("id") long id,@PathVariable("id2") long id2, Model model) {
 		PersonFencePK pfPK = new PersonFencePK();
 		pfPK.setPersPersId(id);

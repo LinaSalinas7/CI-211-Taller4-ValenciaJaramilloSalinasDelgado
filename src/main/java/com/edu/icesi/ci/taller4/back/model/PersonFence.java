@@ -2,6 +2,7 @@ package com.edu.icesi.ci.taller4.back.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -25,12 +26,12 @@ public class PersonFence implements Serializable {
 	private String dumy;
 
 	// bi-directional many-to-one association to Contactfence
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CONTFEN_CONTFEN_ID", insertable = false, updatable = false)
 	private Contactfence contactfence;
 
 	// bi-directional many-to-one association to Person
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PERS_PERS_ID", insertable = false, updatable = false)
 	private Person person;
 

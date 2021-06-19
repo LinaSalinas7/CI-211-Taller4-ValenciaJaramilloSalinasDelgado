@@ -19,7 +19,8 @@ public class PersonDaoImp implements PersonDao {
 	@Override
 	@Transactional
 	public void save(Person entity) {
-		entityManager.persist(entity);
+		Person attachedEntity = entityManager.merge(entity); 
+		entityManager.persist(attachedEntity);
 	}
 
 	@Override
