@@ -8,12 +8,14 @@ import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.edu.icesi.ci.taller4.back.model.PersonFence;
 import com.edu.icesi.ci.taller4.back.model.PersonFencePK;
 import com.edu.icesi.ci.taller4.front.bd.interfaces.PersonFenceDelegate;
 
+@Component
 public class PersonFenceDelegateImp implements PersonFenceDelegate{
 
 	

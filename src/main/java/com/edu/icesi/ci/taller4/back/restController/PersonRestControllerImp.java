@@ -15,7 +15,7 @@ import com.edu.icesi.ci.taller4.back.service.interfaces.PersonService;
 
 
 @RestController
-@RequestMapping("/backend/person")
+@RequestMapping("/api-rest/person")
 public class PersonRestControllerImp {
 
 	@Autowired

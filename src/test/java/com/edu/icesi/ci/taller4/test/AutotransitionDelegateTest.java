@@ -8,13 +8,19 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.edu.icesi.ci.taller4.Taller4RESTJuanValenciaLinasSalinasApplication;
 import com.edu.icesi.ci.taller4.front.bd.Imp.AutotransitionDelegateImp;
 import com.edu.icesi.ci.taller4.front.model.clases.Autotransition;
 
 @SpringBootTest
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = Taller4RESTJuanValenciaLinasSalinasApplication.class)
 class AutotransitionDelegateTest {
 
 	@Mock
