@@ -16,13 +16,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity.csrf().disable().authorizeRequests()
+
 		.antMatchers("/trigerrs/**").access("hasRole('administrador')")
 		.antMatchers("/trigertypes/**").access("hasRole('administrador')")
 		.antMatchers("/persons/**").access("hasRole('administrador')")
-		.antMatchers("/personFence/**").access("hasRole('administrador')")
+		.antMatchers("/personFence/**").access("hasRole('administrador')")	
+
 		.antMatchers("/autotransitions/**").access("hasRole('operador')")
 		.antMatchers("/userselects/**").access("hasRole('operador')")		
-		.antMatchers("/institution/**").access("hasRole('operador')")
+		.antMatchers("/institution/**").access("hasRole('operador')")		
 		.antMatchers("/api-rest/**").permitAll()
 		.antMatchers("/h2/**").permitAll()
 		.anyRequest().authenticated()

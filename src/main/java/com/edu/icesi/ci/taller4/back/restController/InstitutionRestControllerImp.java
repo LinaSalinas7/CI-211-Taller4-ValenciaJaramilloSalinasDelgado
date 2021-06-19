@@ -15,7 +15,7 @@ import com.edu.icesi.ci.taller4.back.service.interfaces.InstitutionService;
 
 
 @RestController
-@RequestMapping("/backend/institution")
+@RequestMapping("/api-rest/institution")
 public class InstitutionRestControllerImp {
 	
 	@Autowired
@@ -41,7 +41,7 @@ public class InstitutionRestControllerImp {
 		institutionService.edit(institution);
 	}
 	
-	@DeleteMapping("/del/{instId}")
+	@DeleteMapping("/{instId}")
 	public void deleteInstitution(@PathVariable("instId") long id){
 		Institution institution = institutionService.findById(id);
 		institutionService.delete(institution);

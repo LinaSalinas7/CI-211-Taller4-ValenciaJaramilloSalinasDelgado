@@ -2,7 +2,12 @@ package com.edu.icesi.ci.taller4.back.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
+import com.edu.icesi.ci.taller4.front.validations.CrearInstit;
+import com.edu.icesi.ci.taller4.front.validations.CrearPerson;
+import com.edu.icesi.ci.taller4.front.validations.EditarInstit;
+import com.edu.icesi.ci.taller4.front.validations.EditarPerson;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
@@ -23,18 +28,21 @@ public class Institution implements Serializable {
 	private long instId;
 
 	@Column(name = "INST_ACADEMICSERVERURL")
+	@NotBlank(groups = {CrearInstit.class,EditarInstit.class})
 	private String instAcademicserverurl;
 
 	@Column(name = "INST_ACADEXTRADATAURL")
 	private String instAcadextradataurl;
 
 	@Column(name = "INST_ACADLOGINPASSWORD")
+	@NotBlank(groups = {CrearInstit.class,EditarInstit.class})
 	private String instAcadloginpassword;
 
 	@Column(name = "INST_ACADLOGINURL")
 	private String instAcadloginurl;
 
 	@Column(name = "INST_ACADLOGINUSERNAME")
+	@NotBlank(groups = {CrearInstit.class,EditarInstit.class})
 	private String instAcadloginusername;
 
 	@Column(name = "INST_ACADPERSONINFODOCURL")
@@ -68,6 +76,7 @@ public class Institution implements Serializable {
 	private String instLdapusersearchfilter;
 
 	@Column(name = "INST_NAME")
+	@NotBlank(groups = {CrearInstit.class,EditarInstit.class})
 	private String instName;
 
 	// bi-directional many-to-one association to Accessdenialevent

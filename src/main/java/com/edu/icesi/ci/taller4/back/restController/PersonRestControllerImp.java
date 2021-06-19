@@ -41,7 +41,7 @@ public class PersonRestControllerImp {
 		personService.edit(person);
 	}
 	
-	@DeleteMapping("/del/{persId}")
+	@DeleteMapping("/{persId}")
 	public void deletePerson(@PathVariable("persId") long id){
 		Person person = personService.findById(id);
 		personService.delete(person);

@@ -62,8 +62,7 @@ public class PersonFenceDelegateImp implements PersonFenceDelegate{
 
 	@Override
 	public void personFenceDelete(PersonFence id) {
-		String url = SERVER + "/personfence/del/";		
+		String url = SERVER + "/personfence/";		
 		restTemplate.delete(url, id, PersonFence.class);
 	}	
-
 }

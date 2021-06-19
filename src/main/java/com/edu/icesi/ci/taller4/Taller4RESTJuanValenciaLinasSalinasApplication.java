@@ -8,6 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.edu.icesi.ci.taller4.back.model.FevInstitution;
+import com.edu.icesi.ci.taller4.back.model.Institution;
+import com.edu.icesi.ci.taller4.back.model.Person;
+import com.edu.icesi.ci.taller4.back.model.PersonFence;
+import com.edu.icesi.ci.taller4.back.model.PersonFencePK;
 import com.edu.icesi.ci.taller4.back.model.Triggerr;
 import com.edu.icesi.ci.taller4.back.model.Triggertype;
 import com.edu.icesi.ci.taller4.back.model.Userr;
@@ -15,6 +19,9 @@ import com.edu.icesi.ci.taller4.back.model.UserrType;
 import com.edu.icesi.ci.taller4.back.model.Userselect;
 import com.edu.icesi.ci.taller4.back.service.implementation.AutotransitionServiceImp;
 import com.edu.icesi.ci.taller4.back.service.implementation.FevInstitutionServiceImp;
+import com.edu.icesi.ci.taller4.back.service.implementation.InstitutionServiceImp;
+import com.edu.icesi.ci.taller4.back.service.implementation.PersonFenceServiceImp;
+import com.edu.icesi.ci.taller4.back.service.implementation.PersonServiceImp;
 import com.edu.icesi.ci.taller4.back.service.implementation.TriggerrServiceImp;
 import com.edu.icesi.ci.taller4.back.service.implementation.TriggertypeServiceImp;
 import com.edu.icesi.ci.taller4.back.service.implementation.UserrServiceImp;
@@ -27,7 +34,9 @@ import com.edu.icesi.ci.taller4.front.bd.Imp.PersonFenceDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.TriggerDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.TriggersTypeDelegateImp;
 import com.edu.icesi.ci.taller4.front.bd.Imp.UserSelectionDelegateImp;
+import com.edu.icesi.ci.taller4.back.daos.ContactfenceDaoImp;
 import com.edu.icesi.ci.taller4.back.model.Autotransition;
+import com.edu.icesi.ci.taller4.back.model.Contactfence;
 
 @SpringBootApplication
 @ComponentScan("com.edu.icesi.ci.taller4")
@@ -43,6 +52,9 @@ public class Taller4RESTJuanValenciaLinasSalinasApplication {
 		TriggerrServiceImp ts = c.getBean(TriggerrServiceImp.class);
 		TriggertypeServiceImp tts = c.getBean(TriggertypeServiceImp.class);
 		UserselectServiceImp us = c.getBean(UserselectServiceImp.class);
+		PersonServiceImp ps = c.getBean(PersonServiceImp.class);
+		PersonFenceServiceImp pfs = c.getBean(PersonFenceServiceImp.class);
+		InstitutionServiceImp is = c.getBean(InstitutionServiceImp.class);
 		
 		
 		//Delegates
@@ -54,6 +66,8 @@ public class Taller4RESTJuanValenciaLinasSalinasApplication {
 		PersonDelegateImp pd = c.getBean(PersonDelegateImp.class);
 		PersonFenceDelegateImp pfd = c.getBean(PersonFenceDelegateImp.class);
 		InstitutionDelegateImp id = c.getBean(InstitutionDelegateImp.class);
+		
+		ContactfenceDaoImp cfdao = c.getBean(ContactfenceDaoImp.class);
 		
 		FevInstitution inst1 = new FevInstitution();
 		inst1.setInstName("Universidad Icesi");	
@@ -106,6 +120,30 @@ public class Taller4RESTJuanValenciaLinasSalinasApplication {
 //		ussel1.setTriggerr(trig2);
 //		us.save(ussel1);
 		
+		Institution i1 = new Institution();
+		i1.setInstName("ICESI");
+		i1.setInstAcademicserverurl("icesi.edu.co");
+		i1.setInstAcadloginusername("icesi");
+		i1.setInstAcadloginpassword("icesi");
+		is.save(i1);
+		
+		Institution i2 = new Institution();
+		i2.setInstName("SENA");
+		i2.setInstAcademicserverurl("sena.com");
+		i2.setInstAcadloginusername("sena");
+		i2.setInstAcadloginpassword("sena");
+		is.save(i2);
+		
+		Person p1 = new Person();
+		p1.setPersName("Lina");
+		p1.setPersLastname("Salinas");
+		p1.setPersAddress("Pance");
+		p1.setPersContactnumber("1234567899");
+		p1.setPersEmail("linas7@example.com");	
+		p1.setPersIsactive("Active");
+		p1.setInstitution(i2);
+		ps.save(p1);
+						
 		Userr user1 = new Userr();		
 		user1.setUsertype(UserrType.administrador);
 		user1.setUserName("admin");

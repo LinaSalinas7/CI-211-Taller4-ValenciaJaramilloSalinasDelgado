@@ -59,7 +59,7 @@ public class InstitutionDelegateImp implements InstitutionDelegate{
 
 	@Override
 	public void institutionDelete(long id) {
-		String url = SERVER + "/institution/del/" + id;
+		String url = SERVER + "/institution/" + id;
 		restTemplate.delete(url);
 	}
 }

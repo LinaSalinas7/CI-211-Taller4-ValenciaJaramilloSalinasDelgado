@@ -34,25 +34,17 @@
 						<div class="form-group col-md-6">
 							<label for="person" class="col-form-label">Person</label> <select
 								th:field="*{person}" class="form-control" id="person">
-								<option th:each="trig : ${person}" th:value="${trig.persId}"
-									th:text="${trig.persName}" />
+								<option th:each="pers : ${person}" th:value="${pers.persId}"
+									th:text="${pers.persName}" />
 							</select>
 						</div>
-						
+												
 						<div class="form-group col-md-6">
-							<label for="persPersId" class="col-form-label">persPersId</label> <input
-								th:field="*{persPersId}" class="form-control" id="persPersId"
-								placeholder="persPersId"> <span
-								th:if="${#fields.hasErrors('persPersId')}"
-								th:errors="*{persPersId}" class="text-danger"></span>
-						</div>
-						
-						<div class="form-group col-md-6">
-							<label for="contfenContfenId" class="col-form-label">contfenContfenId</label> <input
-								th:field="*{contfenContfenId}" class="form-control" id="contfenContfenId"
-								placeholder="contfenContfenId"> <span
-								th:if="${#fields.hasErrors('contfenContfenId')}"
-								th:errors="contfenContfenId" class="text-danger"></span>
+							<label for="contactfence.ContfenId" class="col-form-label">contactfenceContfenId</label> <input
+								th:field="*{contactfence.ContfenId}" class="form-control" id="contactfence.ContfenId"
+								placeholder="contactfence.ContfenId"> <span
+								th:if="${#fields.hasErrors('contactfence.ContfenId')}"
+								th:errors="contactfence.ContfenId" class="text-danger"></span>
 						</div>
 						
 						<div></div>

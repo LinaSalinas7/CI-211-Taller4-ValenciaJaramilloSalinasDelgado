@@ -68,5 +68,4 @@ public class PersonFence implements Serializable {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-
 }

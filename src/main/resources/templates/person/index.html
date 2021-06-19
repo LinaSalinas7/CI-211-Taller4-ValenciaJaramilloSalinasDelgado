@@ -16,12 +16,13 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-	<div class="container my-5" th:switch="${#lists.size(persons)}">
+	<div class="container my-5">
 		<div class="row">
-			<div class="col-md-10">
-				<h2 th:case="0">Not persons added yet</h2>
-				<div th:case="*">
+			<div class="col-md-10">				
 					<h2 class="my-5">Persons</h2>
+					<h3 class="alert alert-primary"
+						th:if="${persons.iterator().hasNext() == false}">No
+						Persons yet!</h3>
 					<table class="table table-striped table-responsive-md">
 						<thead>
 							<tr>
@@ -41,15 +42,20 @@
 							<tr th:each="perso : ${persons}" th:value="${person}">
 								<td th:text="${perso.persId}"></td>
 								<td th:text="${perso.persName}"></td>
-								<td th:text="${perso.persLastname}"></td>	
+								<td th:text="${perso.persLastname}"></td>
 								<td th:text="${perso.persAddress}"></td>
 								<td th:text="${perso.persContactnumber}"></td>
 								<td th:text="${perso.persEmail}"></td>
-								<td th:text="${perso.persIsactive}"></td>					
-								
+								<td th:text="${perso.persIsactive}"></td>
+								<td th:text="${perso.institution.instId}"></td>
+
 								<td><a th:href="@{/person/edit/{id}(id=${perso.persId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
+
+								<td><a th:href="@{/person/del/{id}(id=${perso.persId})}"
+									class="btn btn-primary"><i class="fa fa-times"></i> </a></td>
+
 							</tr>
 						</tbody>
 					</table>
@@ -60,7 +66,7 @@
 				</p>
 			</div>
 		</div>
-		<a href="/"><i class="fas fa-home ml-2"></i> Go back to main</a>
-	</div>
+		<a href="/"><i class="fas fa-home ml-2"></i> Go back to main</a>			
+		<a href="/personfence/"><i class="fas fa-random"></i>Go to personFences</a>
 </body>
 </html>

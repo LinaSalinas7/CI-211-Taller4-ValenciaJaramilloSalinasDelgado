@@ -60,9 +60,7 @@ public class PersonDelegateImp implements PersonDelegate{
 
 	@Override
 	public void personDelete(long id) {
-		String url = SERVER + "/person/del/" + id;
+		String url = SERVER + "/person/" + id;
 		restTemplate.delete(url);
 	}
-
-
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
@@ -20,18 +21,21 @@ public class ContactfenceDaoImp implements ContactfenceDao{
 
 
 	@Override
+	@Transactional
 	public void save(Contactfence entity) {
 		entityManager.persist(entity);
 
 	}
 
 	@Override
+	@Transactional
 	public void delete(Contactfence entity) {
 		entityManager.remove(entity);
 
 	}
 
 	@Override
+	@Transactional
 	public void edit(Contactfence entity) {
 		entityManager.merge(entity);
 
@@ -48,7 +52,4 @@ public class ContactfenceDaoImp implements ContactfenceDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
 }

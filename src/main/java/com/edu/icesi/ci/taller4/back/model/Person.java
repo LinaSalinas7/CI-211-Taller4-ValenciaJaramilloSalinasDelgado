@@ -2,7 +2,11 @@ package com.edu.icesi.ci.taller4.back.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
+import com.edu.icesi.ci.taller4.front.validations.CrearPerson;
+import com.edu.icesi.ci.taller4.front.validations.EditarPerson;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
@@ -25,12 +29,15 @@ public class Person implements Serializable {
 	private long persId;
 
 	@Column(name="PERS_ADDRESS")
+	@NotBlank(groups = {CrearPerson.class,EditarPerson.class})
 	private String persAddress;
 
 	@Column(name="PERS_CONTACTNUMBER")
+	@NotBlank(groups = {CrearPerson.class,EditarPerson.class})
 	private String persContactnumber;
 
 	@Column(name="PERS_EMAIL")
+	@Email(groups = {CrearPerson.class,EditarPerson.class})
 	private String persEmail;
 
 	@Column(name="PERS_EXTID")
@@ -40,9 +47,11 @@ public class Person implements Serializable {
 	private String persIddocument;
 
 	@Column(name="PERS_ISACTIVE")
+	@NotBlank(groups = {CrearPerson.class,EditarPerson.class})
 	private String persIsactive;
 
 	@Column(name="PERS_LASTNAME")
+	@NotBlank(groups = {CrearPerson.class,EditarPerson.class})
 	private String persLastname;
 
 	@Column(name="PERS_LATITUDE")
@@ -55,6 +64,7 @@ public class Person implements Serializable {
 	private String persLongitude;
 
 	@Column(name="PERS_NAME")
+	@NotBlank(groups = {CrearPerson.class,EditarPerson.class})
 	private String persName;
 
 	@Temporal(TemporalType.DATE)
