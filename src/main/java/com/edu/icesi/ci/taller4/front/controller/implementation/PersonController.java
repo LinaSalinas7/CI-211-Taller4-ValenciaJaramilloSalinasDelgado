@@ -38,7 +38,7 @@ public class PersonController {
 	@GetMapping("/persons/add")
 	public String addAutotransition(Model model) {
 		model.addAttribute("person", new Person());
-		model.addAttribute("institutions", institutionDelegate.getInstitution());
+		model.addAttribute("institutions", institutionDelegate.institutionFindAll());
 		return "persons/add-person";
 	}
 	
@@ -47,7 +47,7 @@ public class PersonController {
 			,BindingResult bindingresult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if(bindingresult.hasErrors()) {				
-				model.addAttribute("institutions", institutionDelegate.getInstitution());
+				model.addAttribute("institutions", institutionDelegate.institutionFindAll());
 			 	return "persons/add-person";
 			}		
 			else {
@@ -70,7 +70,7 @@ public class PersonController {
 		if (person == null) 
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 		model.addAttribute("person", person);
-		model.addAttribute("institutions", institutionDelegate.getInstitution());
+		model.addAttribute("institutions", institutionDelegate.institutionFindAll());
 		return "persons/update-person";
 	}
 	
@@ -82,7 +82,7 @@ public class PersonController {
 		if (action != null && !action.equals("Cancel")) {
 			if(bindingresult.hasErrors()) {
 				model.addAttribute("person", person);
-				model.addAttribute("institutions", institutionDelegate.getInstitution());
+				model.addAttribute("institutions", institutionDelegate.institutionFindAll());
 				return "persons/update-person";
 			}
 			personDelegate.delete(person);

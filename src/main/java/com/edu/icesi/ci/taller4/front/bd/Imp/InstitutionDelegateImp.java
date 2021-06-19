@@ -30,16 +30,35 @@ public class InstitutionDelegateImp implements InstitutionDelegate{
 	}
 	
 	@Override
-	public Iterable<Institution> getInstitution() {
-		Institution[] ins = restTemplate.getForObject(SERVER + "/institution/", Institution[].class);
-		List<Institution> list;
-		try {
-			list = Arrays.asList(ins);
-			return list;
-		}catch (Exception e){
-			e.printStackTrace();
-			return null;
-		}
+	public List<Institution> institutionFindAll() {
+		String url = SERVER + "/institution/";
+		Institution[] institution = restTemplate.getForObject(url, Institution[].class);
+		List<Institution> result = Arrays.asList(institution);
+		return result;
 	}
 
+	@Override
+	public void institutionSave(Institution institution) {
+		String url = SERVER + "/institution/";
+		restTemplate.postForObject(url, institution, Institution.class);
+	}
+
+	@Override
+	public void institutionEdit(Institution institution) {
+		String url = SERVER + "/institution/";
+		restTemplate.put(url, institution, Institution.class);
+	}
+
+	@Override
+	public Institution institutionFindById(long id) {
+		String url = SERVER + "/institution/" + id;
+		Institution institution = restTemplate.getForObject(url, Institution.class);
+		return institution;
+	}
+
+	@Override
+	public void institutionDelete(long id) {
+		String url = SERVER + "/institution/" + id;
+		restTemplate.delete(url);
+	}
 }

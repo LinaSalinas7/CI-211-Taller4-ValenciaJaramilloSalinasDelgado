@@ -1,7 +1,5 @@
 package com.edu.icesi.ci.taller4.back.model;
 
-
-
 import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;

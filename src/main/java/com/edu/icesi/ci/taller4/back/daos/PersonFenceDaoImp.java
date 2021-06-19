@@ -45,9 +45,9 @@ public class PersonFenceDaoImp implements PersonFenceDao{
 	}
 
 	@Override
+	@Transactional
 	public List<PersonFence> findAll() {
-		String q = "SELECT per FROM PersonFence per";
+		String q = "SELECT p FROM PersonFence p";
 		return em.createQuery(q).getResultList();
 	}
-
 }

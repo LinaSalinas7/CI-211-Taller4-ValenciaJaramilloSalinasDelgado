@@ -1,9 +1,10 @@
 package com.edu.icesi.ci.taller4.back.model;
 
-
-
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 /**
@@ -71,46 +72,57 @@ public class Institution implements Serializable {
 
 	// bi-directional many-to-one association to Accessdenialevent
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Accessdenialevent> accessdenialevents;
 
 	// bi-directional many-to-one association to Devicestatus
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Devicestatus> devicestatuses;
 
 	// bi-directional many-to-one association to Devicetype
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Devicetype> devicetypes;
 
 	// bi-directional many-to-one association to Epidemstatustransition
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Epidemstatustransition> epidemstatustransitions;
 
 	// bi-directional many-to-one association to Eventstatus
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Eventstatus> eventstatuses;
 
 	// bi-directional many-to-one association to HatParameter
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<HatParameter> hatParameters;
 
 	// bi-directional many-to-one association to Institutioncampus
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Institutioncampus> institutioncampuses;
 
 	// bi-directional many-to-one association to Measurement
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Measurement> measurements;
 
 	// bi-directional many-to-one association to Person
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Person> persons;
 
 	// bi-directional many-to-one association to Physicalspacetype
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Physicalspacetype> physicalspacetypes;
 
 	// bi-directional many-to-one association to Posessiontype
 	@OneToMany(mappedBy = "institution")
+	@JsonIgnore
 	private List<Posessiontype> posessiontypes;
 
 	public Institution() {
